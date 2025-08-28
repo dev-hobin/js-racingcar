@@ -1,4 +1,4 @@
-import { Car } from '../src/main.js';
+import { Car } from '../src/Car.js';
 
 const createCar = (name = '이름') => {
   return new Car(name);
