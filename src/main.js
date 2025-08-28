@@ -12,6 +12,7 @@ async function play() {
   console.log('\n실행 결과\n');
   for (let currentRound = 1; currentRound <= MAX_RACING_ROUND; currentRound++) {
     car.move();
+    console.log(`${car.name} : ${'-'.repeat(car.location)}\n`);
   }
   console.log('경주를 완료했습니다.');
 }
