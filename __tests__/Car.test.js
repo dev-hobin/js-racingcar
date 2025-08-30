@@ -13,14 +13,14 @@ describe('자동차는', () => {
     expect(car.name).toBe(CAR_NAME);
   });
 
-  it('이름은 필수값이다', () => {
+  it('이름이 빈 문자열이거나 공백일 경우 에러가 발생한다.', () => {
     const ERROR_MESSAGE = '자동차 이름은 필수입니다.';
 
     expect(() => createCar('')).toThrow(ERROR_MESSAGE);
     expect(() => createCar('   ')).toThrow(ERROR_MESSAGE);
   });
 
-  it('이름은 5자 이하만 가능하다.', () => {
+  it('이름이 5자를 넘어가면 에러가 발생한다.', () => {
     const ERROR_MESSAGE = '자동차 이름은 5자 이하이어야 합니다.';
 
     expect(() => createCar('이름이6글자')).toThrow(ERROR_MESSAGE);
