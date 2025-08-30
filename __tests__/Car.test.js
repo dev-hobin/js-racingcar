@@ -14,7 +14,7 @@ describe('자동차는', () => {
 
     const car = createCar(CAR_NAME);
 
-    expect(car.name).toBe(CAR_NAME);
+    expect(car.information.name).toBe(CAR_NAME);
   });
 
   it('이름이 빈 문자열이거나 공백일 경우 에러가 발생한다.', () => {
@@ -31,7 +31,7 @@ describe('자동차는', () => {
   it('위치 값을 가지며, 초기 상태는 0 이다', () => {
     const car = createCar();
 
-    expect(car.location).toBe(0);
+    expect(car.information.location).toBe(0);
   });
 
   it('전진할 수 있으며 한 번에 1만큼 전진한다.', () => {
@@ -39,6 +39,6 @@ describe('자동차는', () => {
 
     car.move();
 
-    expect(car.location).toBe(1);
+    expect(car.information.location).toBe(1);
   });
 });

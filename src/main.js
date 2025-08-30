@@ -25,7 +25,8 @@ function moveCars(cars) {
 
 function printCurrentRound(cars) {
   cars.forEach((car) => {
-    console.log(`${car.name} : ${'-'.repeat(car.location)}`);
+    const { name, location } = car.information;
+    console.log(`${name} : ${'-'.repeat(location)}`);
   });
   linebreak();
 }
