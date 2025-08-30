@@ -9,7 +9,7 @@ const createCar = (name = '이름') => {
 };
 
 describe('자동차는', () => {
-  it('이름을 상태로 가질 수 있다', () => {
+  it('자동차명을 상태로 가질 수 있다', () => {
     const CAR_NAME = '이름';
 
     const car = createCar(CAR_NAME);
@@ -17,12 +17,12 @@ describe('자동차는', () => {
     expect(car.information.name).toBe(CAR_NAME);
   });
 
-  it('이름이 빈 문자열이거나 공백일 경우 에러가 발생한다.', () => {
+  it('자동차명이 빈 문자열이거나 공백일 경우 에러가 발생한다.', () => {
     expect(() => createCar('')).toThrow(CAR_NAME_REQUIRED_ERROR_MESSAGE);
     expect(() => createCar('   ')).toThrow(CAR_NAME_REQUIRED_ERROR_MESSAGE);
   });
 
-  it('이름이 5자를 넘어가면 에러가 발생한다.', () => {
+  it('자동차명이 5자를 넘어가면 에러가 발생한다.', () => {
     expect(() => createCar('이름이6글자')).toThrow(
       CAR_NAME_MAX_LENGTH_ERROR_MESSAGE,
     );
