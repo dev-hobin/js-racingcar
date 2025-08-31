@@ -21,7 +21,7 @@ export class Car {
   }
 
   #canMove() {
-    return randomInt(0, 11) >= 4;
+    return randomInt(0, 10) >= 4;
   }
 
   move() {
