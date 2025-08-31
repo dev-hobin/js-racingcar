@@ -3,6 +3,7 @@ import {
   CAR_NAME_REQUIRED_ERROR_MESSAGE,
   CAR_NAME_MAX_LENGTH_ERROR_MESSAGE,
 } from './constant.js';
+import { randomInt } from 'crypto';
 
 export class Car {
   #name;
@@ -19,7 +20,14 @@ export class Car {
     this.#name = name.trim();
   }
 
+  #canMove() {
+    return randomInt(0, 11) >= 4;
+  }
+
   move() {
+    if (!this.#canMove()) {
+      return;
+    }
     this.#location += 1;
   }
 
