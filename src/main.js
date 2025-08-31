@@ -15,7 +15,8 @@ async function play() {
     moveCars(cars);
     printCurrentRound(cars);
   }
-  console.log('경주를 완료했습니다.');
+
+  printWinners(getWinners(cars));
 }
 
 function moveCars(cars) {
@@ -28,6 +29,19 @@ function printCurrentRound(cars) {
     console.log(`${name} : ${'-'.repeat(location)}`);
   });
   linebreak();
+}
+
+function getWinners(cars) {
+  const maxLocation = Math.max(...cars.map((car) => car.information.location));
+  return cars.filter((car) => car.information.location === maxLocation);
+}
+
+function printWinners(cars) {
+  console.log(
+    `${cars
+      .map((car) => car.information.name)
+      .join(', ')}가 최종 우승했습니다.`,
+  );
 }
 
 function linebreak() {
