@@ -31,5 +31,5 @@ function printCurrentRound(cars) {
 }
 
 function linebreak() {
-  console.log('\n');
+  console.log();
 }
