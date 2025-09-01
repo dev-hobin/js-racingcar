@@ -29,6 +29,7 @@ export class Car {
     if (!this.#canMove()) {
       return;
     }
+
     this.#location += 1;
   }
 
