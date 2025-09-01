@@ -2,8 +2,9 @@ import {
   CAR_NAME_MAX_LENGTH,
   CAR_NAME_REQUIRED_ERROR_MESSAGE,
   CAR_NAME_MAX_LENGTH_ERROR_MESSAGE,
+  CAR_RANDOM_UPPER_BOUND,
+  CAR_MOVE_THRESHOLD,
 } from './constant.js';
-import { randomInt } from 'crypto';
 
 export class Car {
   #name;
@@ -21,7 +22,7 @@ export class Car {
   }
 
   #canMove() {
-    return randomInt(0, 10) >= 4;
+    return getRandomInt(0, CAR_RANDOM_UPPER_BOUND) >= CAR_MOVE_THRESHOLD;
   }
 
   move() {
@@ -37,4 +38,10 @@ export class Car {
       location: this.#location,
     };
   }
+}
+
+function getRandomInt(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
