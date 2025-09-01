@@ -1,8 +1,17 @@
-import { Car } from '../src/models/Car/index.js';
+import { Car, getRandomInt } from '../src/models/Car/index.js';
 import {
   CAR_NAME_REQUIRED_ERROR_MESSAGE,
   CAR_NAME_MAX_LENGTH_ERROR_MESSAGE,
+  CAR_MOVE_THRESHOLD,
 } from '../src/models/Car/constant.js';
+
+jest.mock('../src/models/Car/index.js', () => {
+  const actual = jest.requireActual('../src/models/Car/index.js');
+  return {
+    ...actual,
+    getRandomInt: jest.fn(),
+  };
+});
 
 const createCar = (name = '이름') => {
   return new Car(name);
@@ -34,11 +43,21 @@ describe('자동차는', () => {
     expect(car.information.location).toBe(0);
   });
 
-  it('전진할 수 있으며 한 번에 1만큼 전진한다.', () => {
+  it('전진하는 조건을 만족하는 경우 한 번에 1만큼 전진한다.', () => {
+    jest.mocked(getRandomInt).mockReturnValue(CAR_MOVE_THRESHOLD);
     const car = createCar();
 
     car.move();
 
     expect(car.information.location).toBe(1);
+  });
+
+  it('전진하는 조건을 만족하지 않는 경우 전진하지 않는다.', () => {
+    jest.mocked(getRandomInt).mockReturnValue(CAR_MOVE_THRESHOLD - 1);
+    const car = createCar();
+
+    car.move();
+
+    expect(car.information.location).toBe(0);
   });
 });
