@@ -36,10 +36,10 @@ function getWinners(cars) {
   return cars.filter((car) => car.information.location === maxLocation);
 }
 
-function printWinners(cars) {
+function printWinners(winners) {
   console.log(
-    `${cars
-      .map((car) => car.information.name)
+    `${winners
+      .map((winner) => winner.information.name)
       .join(', ')}가 최종 우승했습니다.`,
   );
 }
